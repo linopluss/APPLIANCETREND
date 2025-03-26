@@ -6,45 +6,44 @@
     <title>WinkMe 暮色珊瑚配色方案</title>
     <style>
         :root {
-            /* 主色系 */
+            /* 主色系 - 只保留暮色珊瑚色及其变体 */
             --primary: #FF6B4A;          /* 暮色珊瑚色（主色） */
             --primary-dark: #E65538;     /* 深暮色珊瑚 */
             --primary-light: #FFF0ED;    /* 浅暮色珊瑚 */
+            --primary-subtle: #FFEDE9;   /* 更浅的珊瑚色，用于背景 */
             
-            /* 功能色 */
-            --error: #FE0532;           /* Youtube红（警示色） */
-            --error-light: #FFF0F2;
-            --warning: #FF8E49;         /* 火焰珊瑚（警告色） */
-            --warning-light: #FFF3EC;
-            --success: #23C891;         /* 青春绿（成功色） */
-            --success-light: #E6F8F3;
+            /* 中性色系统 - 参考 WhatsApp 的简洁灰度设计 */
+            --gray-50: #FAFAFA;         /* 最浅的灰 - 用于背景 */
+            --gray-100: #F5F5F5;        /* 用于卡片背景 */
+            --gray-200: #EEEEEE;        /* 用于分割线 */
+            --gray-300: #E0E0E0;        /* 用于边框 */
+            --gray-400: #BDBDBD;        /* 用于禁用状态 */
+            --gray-500: #9E9E9E;        /* 用于次要文本 */
+            --gray-600: #757575;        /* 用于次要文本 */
+            --gray-700: #616161;        /* 用于主要文本 */
+            --gray-800: #424242;        /* 用于标题 */
+            --gray-900: #212121;        /* 最深的灰 - 用于重要文本 */
             
-            /* 中性色系统 */
-            --gray-50: #F8FAFC;         /* 最浅的灰 */
-            --gray-100: #F1F5F9;
-            --gray-200: #E2E8F0;
-            --gray-300: #CBD5E1;
-            --gray-400: #94A3B8;
-            --gray-500: #64748B;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1E293B;
-            --gray-900: #0F172A;        /* 最深的灰 */
-            
-            /* 中性色映射 */
+            /* 中性色映射 - 更简洁的界面 */
             --text-primary: var(--gray-900);
             --text-secondary: var(--gray-600);
             --text-disabled: var(--gray-400);
             --background: #FFFFFF;
-            --background-grey: var(--gray-100);
+            --background-grey: var(--gray-50);
             --divider: var(--gray-200);
             --card-background: #FFFFFF;
-            --overlay: rgba(15, 23, 42, 0.5);
+            --overlay: rgba(0, 0, 0, 0.4);
             
-            /* 投影 */
-            --shadow-sm: 0 2px 8px rgba(255, 107, 74, 0.1);
-            --shadow-md: 0 4px 12px rgba(255, 107, 74, 0.15);
-            --shadow-lg: 0 8px 24px rgba(255, 107, 74, 0.2);
+            /* 状态色 - 使用主色的变体来表示不同状态 */
+            --success: var(--primary);         /* 成功状态使用主色 */
+            --success-light: var(--primary-subtle);
+            --error: var(--primary-dark);      /* 错误状态使用深色主色 */
+            --error-light: var(--primary-light);
+            
+            /* 投影 - 更克制的阴影 */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         :root[data-theme="dark"] {
@@ -52,35 +51,22 @@
             --primary: #FF6B4A;
             --primary-dark: #E65538;
             --primary-light: #2D2220;
+            --primary-subtle: #1F1A19;
             
-            /* 辅助色调整 */
-            --secondary: #FF8E49;
-            --secondary-light: #2D2420;
-            --accent: #23C891;
-            --accent-light: #1F2820;
-            
-            /* 功能色调整 */
-            --error: #FE0532;
-            --error-light: #2D2022;
-            --warning: #FF8E49;
-            --warning-light: #2D2420;
-            --success: #23C891;
-            --success-light: #1F2820;
-            
-            /* 中性色映射-暗色模式 */
-            --text-primary: var(--gray-100);
-            --text-secondary: var(--gray-400);
-            --text-disabled: var(--gray-600);
-            --background: var(--gray-900);
-            --background-grey: var(--gray-800);
-            --divider: var(--gray-700);
-            --card-background: var(--gray-800);
+            /* 中性色映射-暗色模式 - 参考 WhatsApp 暗色模式 */
+            --text-primary: #E0E0E0;
+            --text-secondary: #9E9E9E;
+            --text-disabled: #757575;
+            --background: #121212;
+            --background-grey: #1A1A1A;
+            --divider: #2D2D2D;
+            --card-background: #1A1A1A;
             --overlay: rgba(0, 0, 0, 0.75);
             
-            /* 投影调整 */
-            --shadow-sm: 0 2px 8px rgba(255, 107, 74, 0.2);
-            --shadow-md: 0 4px 12px rgba(255, 107, 74, 0.25);
-            --shadow-lg: 0 8px 24px rgba(255, 107, 74, 0.3);
+            /* 投影调整 - 暗色模式下更微妙的阴影 */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         * {
@@ -667,7 +653,7 @@
         }
 
         .star.active {
-            color: var(--warning);
+            color: var(--primary);
         }
 
         /* 多行文本框样式 */
@@ -865,12 +851,12 @@
             <h2 class="section-title">暮色珊瑚配色说明</h2>
             <div class="card">
                 <p style="color: var(--text-secondary); margin-bottom: 16px;">
-                    以简洁明快的暮色珊瑚为主色调，搭配警告色和成功色，打造充满活力的视觉体验：
+                    以简洁明快的暮色珊瑚为主色调，搭配灰度层次，打造清晰的视觉体验：
                 </p>
                 <div class="tags">
                     <span class="tag">主色：暮色珊瑚</span>
-                    <span class="tag" style="background: var(--warning-light); color: var(--warning);">警告色：火焰珊瑚</span>
-                    <span class="tag" style="background: var(--success-light); color: var(--success);">成功色：青春绿</span>
+                    <span class="tag" style="background: var(--primary-dark); color: white;">深色变体</span>
+                    <span class="tag" style="background: var(--primary-light); color: var(--primary);">浅色变体</span>
                 </div>
             </div>
         </section>
@@ -880,9 +866,8 @@
             <div class="card">
                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px;">
                     <button class="button">主要按钮</button>
-                    <button class="button" style="background: var(--warning)">警告按钮</button>
-                    <button class="button" style="background: var(--success)">成功按钮</button>
-                    <button class="button" style="background: var(--error)">危险按钮</button>
+                    <button class="button" style="background: var(--primary-light); color: var(--primary); border: 1px solid var(--primary)">次要按钮</button>
+                    <button class="button" style="background: var(--gray-600)">禁用按钮</button>
                 </div>
             </div>
         </section>
@@ -891,9 +876,6 @@
             <h2 class="section-title">提示框展示</h2>
             <div class="alert alert-error">
                 <span>错误提示：操作失败，请重试</span>
-            </div>
-            <div class="alert alert-warning">
-                <span>警告提示：请注意账号安全</span>
             </div>
             <div class="alert alert-success">
                 <span>成功提示：操作已完成</span>
@@ -909,19 +891,14 @@
                     <div class="color-value">#FF6B4A</div>
                 </div>
                 <div class="color-item">
-                    <div class="color-box" style="background: var(--warning)"></div>
-                    <div class="color-name">警告色</div>
-                    <div class="color-value">#FF8E49</div>
+                    <div class="color-box" style="background: var(--primary-dark)"></div>
+                    <div class="color-name">深色变体</div>
+                    <div class="color-value">#E65538</div>
                 </div>
                 <div class="color-item">
-                    <div class="color-box" style="background: var(--success)"></div>
-                    <div class="color-name">成功色</div>
-                    <div class="color-value">#23C891</div>
-                </div>
-                <div class="color-item">
-                    <div class="color-box" style="background: var(--error)"></div>
-                    <div class="color-name">错误色</div>
-                    <div class="color-value">#FE0532</div>
+                    <div class="color-box" style="background: var(--primary-light)"></div>
+                    <div class="color-name">浅色变体</div>
+                    <div class="color-value">#FFF0ED</div>
                 </div>
             </div>
         </section>
