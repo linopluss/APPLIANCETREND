@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinkMe 配色方案 2</title>
+    <style>
+        :root {
+            /* 主色系 - 只保留三个关键色调 */
+            --primary: #29B560;
+            --secondary: #2C3E50;
+            --accent: #FF6B6B;
+            
+            /* 中性色 - 统一使用主色调的变体 */
+            --text-primary: #2C3E50;
+            --text-secondary: #78909C;
+            --background: #FFFFFF;
+            --card-background: #FFFFFF;
+            --divider: #E0E0E0;
+            
+            /* 状态色 - 使用主色作为成功色 */
+            --success: #29B560;
+            --error: #FF6B6B;
+            
+            /* 投影 - 简化为两种 */
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        :root[data-theme="dark"] {
+            /* 暗色模式 - 保持色相一致性 */
+            --primary: #29B560;
+            --secondary: #78909C;
+            --accent: #FF6B6B;
+            
+            --text-primary: #E0E0E0;
+            --text-secondary: #78909C;
+            --background: #121212;
+            --card-background: #1E1E1E;
+            --divider: #2C2C2C;
+            
+            --success: #29B560;
+            --error: #FF6B6B;
+            
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            padding: 20px;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            background: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .location {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            background: var(--background);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+        }
+
+        .button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--divider);
+        }
+
+        .button-danger {
+            background: var(--error);
+        }
+
+        .button-disabled {
+            background: var(--text-secondary);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            background: var(--card-background);
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid currentColor;
+        }
+
+        .alert-error {
+            color: var(--error);
+            background: transparent;
+        }
+
+        .alert-success {
+            color: var(--success);
+            background: transparent;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 24px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-header {
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-footer {
+            margin-top: 24px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .list {
+            background: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .list-item {
+            padding: 16px;
+            border-bottom: 1px solid var(--divider);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid currentColor;
+        }
+
+        .badge-primary {
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .badge-error {
+            color: var(--error);
+            background: transparent;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--text-secondary);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .switch-slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .switch-slider:before {
+            transform: translateX(20px);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .color-item {
+            padding: 12px;
+            border-radius: 8px;
+            background: var(--card-background);
+            box-shadow: var(--shadow);
+        }
+
+        .color-box {
+            height: 60px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .color-name {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .color-value {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .theme-status {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mode-switch">
+            <button onclick="toggleDarkMode()" id="themeToggle" class="button">切换暗黑/浅色模式</button>
+            <div class="theme-status" id="themeStatus">当前模式：浅色</div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">简化配色说明</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px;">
+                    新版配色方案采用了更简洁的设计：
+                </p>
+                <div class="tags">
+                    <span class="tag">仅保留三个主要颜色</span>
+                    <span class="tag">统一使用描边样式</span>
+                    <span class="tag">减少色彩变体</span>
+                    <span class="tag">增强对比度</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">登录框</h2>
+            <div class="card">
+                <div class="input-group">
+                    <label class="input-label">手机号码</label>
+                    <input type="tel" class="input" placeholder="请输入手机号码">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">验证码</label>
+                    <input type="text" class="input" placeholder="请输入验证码">
+                </div>
+                <button class="button" style="width: 100%">登录</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">按钮样式</h2>
+            <div class="buttons-grid">
+                <button class="button">主要按钮</button>
+                <button class="button button-secondary">次要按钮</button>
+                <button class="button button-danger">危险按钮</button>
+                <button class="button button-disabled">禁用按钮</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">提示框</h2>
+            <div class="alert alert-error">
+                错误提示：手机号码格式不正确
+            </div>
+            <div class="alert alert-success">
+                成功提示：注册成功
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">列表样式</h2>
+            <div class="list">
+                <div class="list-item">
+                    <div class="avatar" style="width: 40px; height: 40px;"></div>
+                    <div style="flex: 1">
+                        <div class="name" style="margin-bottom: 2px">张小姐</div>
+                        <div class="location" style="margin-bottom: 0">刚刚活跃</div>
+                    </div>
+                    <span class="badge badge-primary">在线</span>
+                </div>
+                <div class="list-item">
+                    <div class="avatar" style="width: 40px; height: 40px;"></div>
+                    <div style="flex: 1">
+                        <div class="name" style="margin-bottom: 2px">王先生</div>
+                        <div class="location" style="margin-bottom: 0">10分钟前活跃</div>
+                    </div>
+                    <span class="badge badge-error">离线</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">配色方案</h2>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--primary)"></div>
+                    <div class="color-name">主色调</div>
+                    <div class="color-value">#29B560</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--secondary)"></div>
+                    <div class="color-name">辅助色</div>
+                    <div class="color-value">#2C3E50</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--accent)"></div>
+                    <div class="color-name">强调色</div>
+                    <div class="color-value">#FF6B6B</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--text-primary)"></div>
+                    <div class="color-name">主要文字</div>
+                    <div class="color-value">#2C3E50 / #E0E0E0</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const root = document.documentElement;
+        const themeStatus = document.getElementById('themeStatus');
+
+        function toggleDarkMode() {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                root.removeAttribute('data-theme');
+                themeStatus.textContent = '当前模式：浅色';
+            } else {
+                root.setAttribute('data-theme', 'dark');
+                themeStatus.textContent = '当前模式：暗黑';
+            }
+        }
+
+        // 检查系统主题
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            root.setAttribute('data-theme', 'dark');
+            themeStatus.textContent = '当前模式：暗黑';
+        }
+
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (e.matches) {
+                root.setAttribute('data-theme', 'dark');
+                themeStatus.textContent = '当前模式：暗黑';
+            } else {
+                root.removeAttribute('data-theme');
+                themeStatus.textContent = '当前模式：浅色';
+            }
+        });
+    </script>
+</body>
+</html> 

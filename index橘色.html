@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinkMe 活力橘配色方案</title>
+    <style>
+        :root {
+            /* 主色系 */
+            --primary: #FD5A49;
+            --primary-dark: #E63E2E;
+            --primary-light: #FFF1F0;
+            
+            /* 功能色 */
+            --error: #FF4D4F;
+            --error-light: #FFF1F0;
+            --warning: #FFA940;
+            --warning-light: #FFF7E6;
+            --success: #52C41A;
+            --success-light: #F6FFED;
+            
+            /* 中性色 */
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --text-disabled: #B2BEC3;
+            --background: #FFFFFF;
+            --background-grey: #F7F7F7;
+            --divider: #EAEAEA;
+            --card-background: #FFFFFF;
+            --overlay: rgba(0, 0, 0, 0.5);
+            
+            /* 投影 */
+            --shadow-sm: 0 2px 8px rgba(253, 90, 73, 0.1);
+            --shadow-md: 0 4px 12px rgba(253, 90, 73, 0.15);
+            --shadow-lg: 0 8px 24px rgba(253, 90, 73, 0.2);
+        }
+
+        :root[data-theme="dark"] {
+            /* 主色系保持不变 */
+            --primary: #FD5A49;
+            --primary-dark: #E63E2E;
+            --primary-light: #3A2826;
+            
+            /* 功能色调整 */
+            --error: #FF4D4F;
+            --error-light: #2D1F1F;
+            --warning: #FFA940;
+            --warning-light: #2B2111;
+            --success: #52C41A;
+            --success-light: #1F2D1F;
+            
+            /* 中性色调整 */
+            --text-primary: #F5F6F7;
+            --text-secondary: #A0A4A8;
+            --text-disabled: #636E72;
+            --background: #121212;
+            --background-grey: #1A1A1A;
+            --divider: #2C2C2C;
+            --card-background: #1E1E1E;
+            --overlay: rgba(0, 0, 0, 0.75);
+            
+            /* 投影调整 */
+            --shadow-sm: 0 2px 8px rgba(253, 90, 73, 0.2);
+            --shadow-md: 0 4px 12px rgba(253, 90, 73, 0.25);
+            --shadow-lg: 0 8px 24px rgba(253, 90, 73, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            padding: 20px;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 通用样式 */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* 头像和基础信息 */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            background: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .location {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* 标签样式 */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+        }
+
+        /* 按钮样式 */
+        .button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .button-secondary {
+            background: var(--background-grey);
+            color: var(--text-primary);
+            border: 1px solid var(--divider);
+        }
+
+        .button-danger {
+            background: var(--error);
+        }
+
+        .button-warning {
+            background: var(--warning);
+        }
+
+        .button-disabled {
+            background: var(--text-disabled);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* 输入框样式 */
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            background: var(--card-background);
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary-light);
+        }
+
+        .input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* 警告框样式 */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .alert-error {
+            background: var(--error-light);
+            color: var(--error);
+        }
+
+        .alert-warning {
+            background: var(--warning-light);
+            color: var(--warning);
+        }
+
+        .alert-success {
+            background: var(--success-light);
+            color: var(--success);
+        }
+
+        /* 列表样式 */
+        .list {
+            background: var(--card-background);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .list-item {
+            padding: 16px;
+            border-bottom: 1px solid var(--divider);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        /* 徽章样式 */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge-primary {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .badge-error {
+            background: var(--error-light);
+            color: var(--error);
+        }
+
+        /* 开关样式 */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--text-disabled);
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .switch-slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .switch-slider:before {
+            transform: translateX(20px);
+        }
+
+        /* 颜色展示 */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .color-item {
+            padding: 12px;
+            border-radius: 8px;
+            background: var(--card-background);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .color-box {
+            height: 60px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .color-name {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .color-value {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .theme-status {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mode-switch">
+            <button onclick="toggleDarkMode()" id="themeToggle" class="button">切换暗黑/浅色模式</button>
+            <div class="theme-status" id="themeStatus">当前模式：浅色</div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">活力橘配色说明</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 16px;">
+                    以活力橘色为主色调，打造温暖热情的视觉体验：
+                </p>
+                <div class="tags">
+                    <span class="tag">主色调：活力橘</span>
+                    <span class="tag">温暖活力</span>
+                    <span class="tag">清晰对比</span>
+                    <span class="tag">简约布局</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">登录框</h2>
+            <div class="card">
+                <div class="input-group">
+                    <label class="input-label">手机号码</label>
+                    <input type="tel" class="input" placeholder="请输入手机号码">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">验证码</label>
+                    <input type="text" class="input" placeholder="请输入验证码">
+                </div>
+                <button class="button" style="width: 100%">登录</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">按钮样式</h2>
+            <div class="buttons-grid">
+                <button class="button">主要按钮</button>
+                <button class="button button-secondary">次要按钮</button>
+                <button class="button button-danger">危险按钮</button>
+                <button class="button button-warning">警告按钮</button>
+                <button class="button button-disabled">禁用按钮</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">提示框</h2>
+            <div class="alert alert-error">
+                错误提示：手机号码格式不正确
+            </div>
+            <div class="alert alert-warning">
+                警告提示：您的会员即将到期
+            </div>
+            <div class="alert alert-success">
+                成功提示：注册成功
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">列表样式</h2>
+            <div class="list">
+                <div class="list-item">
+                    <div class="avatar" style="width: 40px; height: 40px;"></div>
+                    <div style="flex: 1">
+                        <div class="name" style="margin-bottom: 2px">张小姐</div>
+                        <div class="location" style="margin-bottom: 0">刚刚活跃</div>
+                    </div>
+                    <span class="badge badge-primary">在线</span>
+                </div>
+                <div class="list-item">
+                    <div class="avatar" style="width: 40px; height: 40px;"></div>
+                    <div style="flex: 1">
+                        <div class="name" style="margin-bottom: 2px">王先生</div>
+                        <div class="location" style="margin-bottom: 0">10分钟前活跃</div>
+                    </div>
+                    <span class="badge badge-error">离线</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">配色方案</h2>
+            <div class="color-grid">
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--primary)"></div>
+                    <div class="color-name">主色调</div>
+                    <div class="color-value">#FD5A49</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--primary-dark)"></div>
+                    <div class="color-name">深色变体</div>
+                    <div class="color-value">#E63E2E</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--primary-light)"></div>
+                    <div class="color-name">浅色变体</div>
+                    <div class="color-value">#FFF1F0 / #3A2826</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--success)"></div>
+                    <div class="color-name">成功色</div>
+                    <div class="color-value">#52C41A</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--error)"></div>
+                    <div class="color-name">错误色</div>
+                    <div class="color-value">#FF4D4F</div>
+                </div>
+                <div class="color-item">
+                    <div class="color-box" style="background: var(--text-primary)"></div>
+                    <div class="color-name">主要文字</div>
+                    <div class="color-value">#2D3436 / #F5F6F7</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const root = document.documentElement;
+        const themeStatus = document.getElementById('themeStatus');
+
+        function toggleDarkMode() {
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                root.removeAttribute('data-theme');
+                themeStatus.textContent = '当前模式：浅色';
+            } else {
+                root.setAttribute('data-theme', 'dark');
+                themeStatus.textContent = '当前模式：暗黑';
+            }
+        }
+
+        // 检查系统主题
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            root.setAttribute('data-theme', 'dark');
+            themeStatus.textContent = '当前模式：暗黑';
+        }
+
+        // 监听系统主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (e.matches) {
+                root.setAttribute('data-theme', 'dark');
+                themeStatus.textContent = '当前模式：暗黑';
+            } else {
+                root.removeAttribute('data-theme');
+                themeStatus.textContent = '当前模式：浅色';
+            }
+        });
+    </script>
+</body>
+</html> 
